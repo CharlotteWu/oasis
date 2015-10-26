@@ -1,0 +1,20 @@
+ <%- include header %>
+      <div class="page-container clearfix">  
+       <div class="info">
+          <img class="avatar" src="<%- user.head %>"> 
+          <span><%= user.name %></span></br> 
+        </div>
+        <% posts.forEach(function (post, index) { %>
+        <article>  
+             <!--封面--><div class="cover"><img src="<%= post.cover %>"></div>
+             <a class="cover-avatar" href="/u/<%= post.name %>"><img class="avatar" src="<%= post.head %>"></a> 
+                 <h6><a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h6>  
+              <p>
+                  <!--作者--><a href="u/<%= post.name %>"><%= post.name %></a> | 
+                  <!--日期--><%= post.time.minute %> 
+              </p> 
+           </article>
+        <% }) %> 
+      </div>
+  <%- include paging %> 
+  <%- include footer %>

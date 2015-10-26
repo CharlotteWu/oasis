@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/script.js"></script> 
+    <script charset="utf-8" src="/KindEditor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="/KindEditor/lang/zh-CN.js"></script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+  editor = K.create('textarea', {
+  allowImageUpload : false,
+  items : [
+    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
+    'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright',
+    'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+  });
+});
+</script>
+</head>
+<body>
+      <header>
+      <a href="/"><img class="logo-min" src="/images/logo-min.png"></a>
+       <div class="basic-login">
+        <% if (user) { %>
+
+        <span><a href="/archive"><i class="iconfont">&#xe61e;</i>旅游札记</a></span>
+        <span><a href="/tags"><i class="iconfont">&#xe60f;</i>标签</a></span> 
+        <span><a href="/post"><i class="iconfont">&#xe601;</i>我要写游记</a></span>
+        <span><a href="/logout"><i class="iconfont">&#xe72f;</i>登出</a></span>
+        <span class="search"><form action="/search" method="GET">
+        <a href="/search" class="search-btn"><i class="iconfont">|&#xe607;</i></a>
+        <input type="text" name="keyword" placeholder="SEARCH FOR ARTICLE、AUTHOR" class="search-basket"></form></span>
+         
+        <% } else { %> 
+         <span><a href="/login"><i class="iconfont">&#xe619;</i>登陆</a></span>
+        <span><a href="/reg"><i class="iconfont">&#xe61f;</i>注册</a></span>
+        <%  } %>
+       </div>
+     </header> 
+     <div class="content"> 
+     <div class="page-width">
+ <form method="post">
+ <span>
+  标题：<br />
+  <input class="p-title" type="text" name="title" value="<%= post.title %>" disabled="disabled" /><br /><br /></span>
+  <span>
+   标签：<br />
+  <input class="p-title" type="text" name="tag1" value="<%= post.tags[0] %>" disabled="disabled" />
+  <input class="p-title" type="text" name="tag2" value="<%= post.tags[1] %>" disabled="disabled" />
+  <input class="p-title" type="text" name="tag3" value="<%= post.tags[2] %>" disabled="disabled" /><br /><br /></span>
+  <span>
+  正文：<br /> 
+  <textarea name="post" style="width: 100%"><%= post.post %></textarea><br /></span>
+  <button type="submit" />保存修改</button>
+ </form> 
+ <%- include footer %>

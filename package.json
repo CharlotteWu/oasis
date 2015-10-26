@@ -1,0 +1,20 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "connect-flash": "*",
+    "connect-mongo": "*",
+    "ejs": "*",
+    "express": "3.5.0",
+    "express-session": "*", 
+    "markdown": "*", 
+    "mongodb": "*", 
+    "morgan": "~1.5.1",
+    "supervisor": "*",
+    "ueditor": "^1.1.1"
+  }
+}

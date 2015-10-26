@@ -1,0 +1,10 @@
+<%- include header %>
+<div class="page-width">
+<h1>我的标签：</h1>
+<div class="tag">
+<% posts.forEach(function (tag, index) { %>
+  <a href="/tags/<%= tag %>"><i class="iconfont">&#xe60f;</i><%= tag %></a>
+<% }) %> 
+</div>
+</div>
+<%- include footer %>
